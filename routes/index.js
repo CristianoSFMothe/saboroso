@@ -18,19 +18,35 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/contacts", (req, res, next) => {
-  res.render("contacts", { title: "Restaurante Saboroso!"});
+  res.render("contacts", {
+    title: "Restaurante Saboroso!",
+    background: "images/img_bg_3.jpg",
+    h1: "Diga um oi!",
+  });
 });
 
 router.get("/menus", (req, res, next) => {
-  res.render("menus", { title: "Restaurante Saboroso!"});
+  res.render("menus", {
+    title: "Restaurante Saboroso!",
+    background: "images/img_bg_1.jpg",
+    h1: "Saborei o nosso menu!",
+  });
 });
 
 router.get("/reservations", (req, res, next) => {
-  res.render("reservations", { title: "Restaurante Saboroso!"});
+  res.render("reservations", {
+    title: "Restaurante Saboroso!",
+    background: "images/img_bg_2.jpg",
+    h1: "Reserver uma mesa",
+  });
 });
 
 router.get("/services", (req, res, next) => {
-  res.render("services", { title: "Restaurante Saboroso!"});
+  res.render("services", {
+    title: "Restaurante Saboroso!",
+    background: "images/img_bg_1.jpg",
+    h1: "É um prazer pode servir",
+  });
 });
 
 module.exports = router;
