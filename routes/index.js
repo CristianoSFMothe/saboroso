@@ -1,20 +1,12 @@
-var conn = require("./../inc/dabase");
-var express = require("express");
-var router = express.Router();
+const menus = require("./../inc/menus");
+const express = require("express");
+const router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  conn.query(
-    `
-    SELECT * FROM tb_menus ORDER BY title
-  `,
-    (err, results) => {
-      if (err) {
-        console.log(err);
-      }
-      res.render("index", { title: "Restaurante Saboroso!", menus: results });
-    }
-  );
+  menus.getMenus().then((results) => {
+    res.render("index", { title: "Restaurante Saboroso!", menus: results });
+  });
 });
 
 router.get("/contacts", (req, res, next) => {
@@ -26,10 +18,13 @@ router.get("/contacts", (req, res, next) => {
 });
 
 router.get("/menus", (req, res, next) => {
-  res.render("menus", {
-    title: "Restaurante Saboroso!",
-    background: "images/img_bg_1.jpg",
-    h1: "Saborei o nosso menu!",
+  menus.getMenus().then((results) => {
+    res.render("menus", {
+      title: "Restaurante Saboroso!",
+      background: "images/img_bg_1.jpg",
+      h1: "Saborei o nosso menu!",
+      menus: results,
+    });
   });
 });
 
