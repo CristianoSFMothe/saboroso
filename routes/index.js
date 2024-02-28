@@ -47,8 +47,10 @@ router.post("/reservations", (req, res, next) => {
       .save(req.body)
       .then((results) => {
         req.body = {}
-        
+
         reservations.render(req, res, null, "Reservar realizada com sucesso");
+
+        res.redirect("/");
       })
       .catch((err) => {
         reservations.render(req, res, err.message);
