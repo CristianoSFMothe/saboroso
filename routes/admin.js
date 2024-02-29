@@ -1,4 +1,5 @@
 const express = require("express");
+const users = require("./../inc/user");
 const router = express.Router();
 
 router.get("/", (req, res, next) => {
@@ -6,15 +7,29 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/login", (req, res, next) => {
-  if (!req.session.views) req.session.views = 0;
-
-  console.log("incrementando a chave", req.session.views++);
-  
   res.render("admin/login");
 });
 
+router.post("/login", (req, res, next) => {
+
+  console.log("Dados do usuário", req.body)
+  if (!req.body.email) {
+    users.render(req, res, "Preencha o campo e-mail.")
+  } else if (!req.body.password) {
+    users.render(req, res, "Preencha o campo senha.")
+  } else {
+    users.login(req.body.email, req.body.password).then(users => {
+      req.session.user = user;
+
+      res.redirect("/admin");
+    }).catch(err => {
+      users.render(req, res, err.message || err);
+    })
+  }
+});
+
 router.get("/contacts", (req, res, next) => {
-  res.render("admin/contacts");
+  users.render(req, res, null);
 });
 
 router.get("/emails", (req, res, next) => {
@@ -27,7 +42,7 @@ router.get("/menus", (req, res, next) => {
 
 router.get("/reservations", (req, res, next) => {
   res.render("admin/reservations", {
-    date: {}
+    date: {},
   });
 });
 
