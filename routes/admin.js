@@ -7,7 +7,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/login", (req, res, next) => {
-  res.render("admin/login");
+  users.render(req, res, null)
 });
 
 router.post("/login", (req, res, next) => {
@@ -18,7 +18,7 @@ router.post("/login", (req, res, next) => {
   } else if (!req.body.password) {
     users.render(req, res, "Preencha o campo senha.")
   } else {
-    users.login(req.body.email, req.body.password).then(users => {
+    users.login(req.body.email, req.body.password).then(user => {
       req.session.user = user;
 
       res.redirect("/admin");

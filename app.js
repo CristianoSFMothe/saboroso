@@ -18,22 +18,10 @@ dotenv.config();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
-// Medlware
-// app.user(session({
-//   store: new RedisStore({
-//     host: process.env.REDIS_HOST, 
-//     port: process.env.REDIS_PORT,
-//   }),
-//   host: process.env.REDIS_HOST,
-//   resave: true,
-//   saveUninitialized: true
-// }));
-//middleware com redis
 app.use(session({
  
   store: new RedisStore({
-    host: process.env.REDIS_HOST,
+    host: 'localhost',
     port: process.env.REDIS_PORT,
   }),
   //criptografia a sessão
