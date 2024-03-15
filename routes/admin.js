@@ -2,8 +2,26 @@ const express = require("express");
 const users = require("./../inc/user");
 const router = express.Router();
 
+router.use((req, res, next) => {
+  if (['/login'].indexOf(req.url) === -1 && !req.session.user) {
+    res.redirect("/admin/login");
+  } else {
+    next();
+  }
+})
+
+router.get("/logout", (req, res, next) => {
+  delete req.session.user;
+
+  res.redirect("/admin/logout");
+});
+
 router.get("/", (req, res, next) => {
+  // if(!req.session.user) {
+  //   res.redirect("/admin/login");
+  // } else {
   res.render("admin/index");
+  // }
 });
 
 router.get("/login", (req, res, next) => {
@@ -29,7 +47,7 @@ router.post("/login", (req, res, next) => {
 });
 
 router.get("/contacts", (req, res, next) => {
-  users.render(req, res, null);
+  res.render("admin/contacts");
 });
 
 router.get("/emails", (req, res, next) => {
