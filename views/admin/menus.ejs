@@ -4,14 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin - Hcode Treinamentos</title>
+  <title>Admin - Saboroso</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
-  <meta name="author" content="Hcode.com.br" />
+  <meta name="author" content="https://github.com/CristianoSFMothe" />
   <meta name="theme-color" content="#3c8dbc">
 </head>
 
@@ -22,11 +22,11 @@
     <header class="main-header">
 
       <!-- Logo -->
-      <a href="index.html" class="logo">
+      <a href="index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini">HCODE</span>
+        <span class="logo-mini">Saboroso</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg">HCODE</span>
+        <span class="logo-lg">Saboroso</span>
       </a>
 
       <!-- Header Navbar -->
@@ -51,11 +51,13 @@
                 <!-- The user image in the menu -->
                 <li class="user-header">
                   <img src="dist/img/avatar5.png" class="img-circle" alt="User Image">
+
                   <p>
                     Fulano Junior
-                    <small>fulano@hcode.com.br</small>
+                    <small>fulano@email.com.br</small>
                   </p>
                 </li>
+
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
@@ -99,7 +101,7 @@
               <span>Tela Inicial</span>
             </a>
           </li>
-          <li>
+          <li class="active">
             <a href="menus.html">
               <i class="fa fa-cutlery"></i>
               <span>Menu</span>
@@ -111,7 +113,7 @@
               <span>Reservas</span>
             </a>
           </li>
-          <li class="active">
+          <li>
             <a href="contacts.html">
               <i class="fa fa-comments"></i>
               <span>Contatos</span>
@@ -140,11 +142,11 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Contatos
+          Menu
         </h1>
         <ol class="breadcrumb">
           <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-          <li class="active">Contatos</li>
+          <li class="active">Menu</li>
         </ol>
       </section>
 
@@ -154,6 +156,8 @@
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">Lista</h3>
+            <a href="#" class="btn btn-xs pull-right btn-success" data-toggle="modal" data-target="#modal-create"><i
+                class="fa fa-plus"></i> Novo</a>
           </div>
           <!-- /.box-header -->
           <div class="box-body no-padding">
@@ -161,23 +165,23 @@
               <thead>
                 <tr>
                   <th style="width: 10px">#</th>
-                  <th>Nome</th>
-                  <th>E-mail</th>
-                  <th>Mensagem</th>
-                  <th style="min-width: 75px;">Ações</th>
+                  <th>Foto</th>
+                  <th>Título</th>
+                  <th>Descrição</th>
+                  <th>Preço</th>
+                  <th style="min-width: 134px;">Ações</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>1.</td>
-                  <td>Hcode</td>
-                  <td>contato@hcode.com.br</td>
-                  <td>Mussum Ipsum, cacilds vidis litro abertis. Manduma pindureta quium dia nois paga. Viva Forevis
-                    aptent taciti sociosqu ad
-                    litora torquent. In elementis mé pra quem é amistosis quis leo. Admodum accumsan disputationi eu
-                    sit. Vide electram sadipscing
-                    et per.</td>
-                  <td><button type="button" class="btn btn-xs btn-danger btn-delete"><i class="fa fa-trash"></i> Excluir</button></td>
+                  <td><img src="dist/img/boxed-bg.jpg" alt="" style="height: 18px;"></td>
+                  <td>Update software</td>
+                  <td>Diuretics paradis num copo é motivis de denguis.</td>
+                  <td>R$1,99</td>
+                  <td><button type="button" class="btn btn-xs btn-info btn-update" data-toggle="modal" data-target="#modal-update"><i
+                        class="fa fa-pencil"></i> Editar</button>&nbsp;<button type="button" class="btn btn-xs btn-danger btn-delete"><i
+                        class="fa fa-trash"></i> Excluir</button></td>
                 </tr>
               </tbody>
             </table>
@@ -190,14 +194,95 @@
     </div>
     <!-- /.content-wrapper -->
 
+    <div class="modal fade" id="modal-create">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-top: 3px solid #00a65a;">
+          <form method="post">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Novo Menu</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="inputTitleCreate">Título</label>
+                <input type="text" class="form-control" id="inputTitleCreate" name="title">
+              </div>
+              <div class="form-group">
+                <label for="inputDescriptionCreate">Descrição</label>
+                <textarea class="form-control" id="inputDescriptionCreate" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="inputPriceCreate">Preço</label>
+                <input type="number" class="form-control" id="inputPriceCreate" name="price">
+              </div>
+              <div class="form-group">
+                <label for="inputPhotoCreate">Foto</label>
+                <img style="max-width: 128px; max-height: 128px; display: block;" src="dist/img/boxed-bg.jpg">
+                <input type="file" class="form-control" id="inputPhotoCreate" name="photo">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success">Salvar</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="modal-update">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-top: 3px solid #00c0ef;">
+          <form method="post">
+            <input type="hidden" name="id">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Editar Menu</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="inputTitleUpdate">Título</label>
+                <input type="text" class="form-control" id="inputTitleUpdate" name="title">
+              </div>
+              <div class="form-group">
+                <label for="inputDescriptionUpdate">Descrição</label>
+                <textarea class="form-control" id="inputDescriptionUpdate" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="inputPriceUpdate">Preço</label>
+                <input type="number" class="form-control" id="inputPriceUpdate" name="price">
+              </div>
+              <div class="form-group">
+                <label for="inputPhotoUpdate">Foto</label>
+                <img style="max-width: 128px; max-height: 128px; display: block;" src="dist/img/boxed-bg.jpg">
+                <input type="file" class="form-control" id="inputPhotoUpdate" name="photo">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-info">Salvar</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
     <!-- Main Footer -->
     <footer class="main-footer">
       <!-- To the right -->
       <div class="pull-right hidden-xs">
-        <a target="_blank" href="https://www.hcode.com.br">Hcode</a>
+        <a target="_blank" href="https://github.com/CristianoSFMothe">Saboroso</a>
       </div>
       <!-- Default to the left -->
-      Projeto desenvolvido no curso online de JavaScript da Hcode Treinamentos.
+      Projeto desenvolvido com JavaScript.
     </footer>
 
   </div>
@@ -217,6 +302,19 @@
   <!-- AdminLTE for demo purposes -->
   <script src="dist/js/demo.js"></script>
   <!-- page script -->
+  <script type="text/javascript">
+    // To make Pace works on Ajax calls
+    $(document).ajaxStart(function () {
+      Pace.restart()
+    })
+    $('.ajax').click(function () {
+      $.ajax({
+        url: '#', success: function (result) {
+          $('.ajax-content').html('<hr>Ajax Request Completed !')
+        }
+      })
+    })
+  </script>
 
 </body>
 
